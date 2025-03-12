@@ -30,6 +30,9 @@ pnpm install
 ```
 PORT=3000
 NODE_ENV=development
+BASE_URL=https://panel-dev.viradoctores.com
+AUTH_EMAIL=test@test.test
+AUTH_PASSWORD=12345678
 ```
 
 ## Comandos disponibles
