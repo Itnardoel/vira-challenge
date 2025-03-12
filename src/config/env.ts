@@ -1,8 +1,8 @@
 /**
- * Configuración de variables de entorno
+ * Environment variables configuration
  */
 
-// Cargar variables de entorno directamente con process.loadEnvFile()
+// Load environment variables directly with process.loadEnvFile()
 process.loadEnvFile();
 
 export const config = {
