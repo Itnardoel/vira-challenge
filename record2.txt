@@ -1,0 +1,34 @@
+FOLIO DE TRÁMITE #F-20230002
+=======================
+
+DATOS DEL SOLICITANTE
+--------------------
+Nombre: María González López
+DNI/NIF: 87654321B
+Teléfono: 698765432
+Email: maria.gonzalez@ejemplo.com
+
+INFORMACIÓN DEL TRÁMITE
+---------------------
+Tipo de Trámite: Indemnización por Accidente
+Fecha de Solicitud: 03/06/2023
+Fecha de Actualización: 10/06/2023
+Referencia: REF-2023-0789
+
+Estado: pendiente
+
+DOCUMENTACIÓN PRESENTADA
+----------------------
+- Formulario de reclamación
+- Copia de DNI/NIF
+- Informe médico
+- Parte policial
+- Fotografías del accidente
+
+OBSERVACIONES
+-----------
+Documentación completa. Caso asignado al perito Antonio Ramírez para evaluación.
+
+PRÓXIMOS PASOS
+------------
+Se realizará peritaje en un plazo de 7 días hábiles. El solicitante será contactado para coordinar visita.

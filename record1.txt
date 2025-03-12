@@ -1,0 +1,33 @@
+FOLIO DE TRÁMITE #F-20230001
+=======================
+
+DATOS DEL SOLICITANTE
+--------------------
+Nombre: Juan Pérez Rodríguez
+DNI/NIF: 12345678A
+Teléfono: 612345678
+Email: juan.perez@ejemplo.com
+
+INFORMACIÓN DEL TRÁMITE
+---------------------
+Tipo de Trámite: Reclamación de Seguro
+Fecha de Solicitud: 15/05/2023
+Fecha de Actualización: 22/05/2023
+Referencia: REF-2023-0456
+
+Estado: ingresado
+
+DOCUMENTACIÓN PRESENTADA
+----------------------
+- Formulario de solicitud
+- Copia de DNI/NIF
+- Comprobante de pago
+- Informe pericial
+
+OBSERVACIONES
+-----------
+Trámite procesado correctamente. Se ha asignado al departamento correspondiente para su gestión.
+
+PRÓXIMOS PASOS
+------------
+El solicitante recibirá notificación por correo electrónico cuando haya novedades en su expediente.
