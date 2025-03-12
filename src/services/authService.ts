@@ -1,5 +1,5 @@
 import { chromium } from 'playwright';
-import { config } from '../config/env.js';
+import { config } from '../config/env.ts';
 
 /**
  * Performs the login process on the platform
