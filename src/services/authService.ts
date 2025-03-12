@@ -1,12 +1,11 @@
-import { chromium, type Browser } from 'playwright';
+import { chromium } from 'playwright';
+import { config } from '../config/env.js';
 
 /**
  * Performs the login process on the platform
- * @param email Email to login
- * @param password Password to login
  * @returns Object with the browser and login status
  */
-async function login(email: string = 'test@test.test', password: string = '12345678'): Promise<{browser: Browser, success: boolean}> {
+async function login() {
   // Launch the browser
   const browser = await chromium.launch(/*{
     headless: false, // Visible mode to see the automation
@@ -20,7 +19,7 @@ async function login(email: string = 'test@test.test', password: string = '12345
     const page = await browser.newPage();
     
     // Navigate to the login page
-    await page.goto('https://panel-dev.viradoctores.com');
+    await page.goto(config.baseUrl);
     
     console.log('Page loaded, starting login process...');
     
@@ -28,8 +27,8 @@ async function login(email: string = 'test@test.test', password: string = '12345
     await page.waitForSelector('input[type="email"]');
     
     // Enter credentials
-    await page.fill('input[type="email"]', email);
-    await page.fill('input[type="password"]', password);
+    await page.fill('input[type="email"]', config.auth.email);
+    await page.fill('input[type="password"]', config.auth.password);
     
     // Click the login button
     await page.click('button[type="submit"]');
