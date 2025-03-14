@@ -3,6 +3,7 @@ import { login } from '../services/authService.ts';
 import { readFiles, updateFiles } from '../services/fileService.ts';
 import { sendTelegramNotification } from '../services/notificationService.ts';
 import { uploadFeeLetter } from '../services/feeLetterService.ts';
+import { logClaimNumberWithAI } from '../services/aiService.ts';
 
 /**
  * Controller for automating the record verification process
@@ -66,7 +67,13 @@ export async function automateRecordVerification(req: Request, res: Response) {
     } else {
       sendTelegramNotification(`Both records are already submitted`);
       const claimNumber = uploadFeeLetter();
+      
+      // Usar el servicio de AI para generar un mensaje personalizado
+      await logClaimNumberWithAI(claimNumber);
+      
+      // Mantener el log original para compatibilidad
       console.log(`Fee letter generated with claim number: ${claimNumber}`);
+      
       sendTelegramNotification(`Fee letter generated with claim number: ${claimNumber}`);
     }
 
