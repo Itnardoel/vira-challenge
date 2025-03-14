@@ -92,44 +92,34 @@ Si este mensaje está presente en la página después de intentar iniciar sesió
 
 ---
 
-## Integración con Express.js
+## Cambio en la obtención de nombres de folios
 
 ### **Primer Prompt**:
 ```
-En el archivo index.ts vas a crear una nueva ruta que permita realizar el login. La misma debe recibir como parámetros de consola dos archivos que actuarán como folios conteniendo datos para verificar su estado (si han sido ingresados o no). Además, es necesario modificar la función en login.ts para que no cierre el navegador y en su lugar devuelva el navegador y la página, de modo que podamos manejarlo desde el endpoint y continuar con el flujo de trabajo.
+Cambia la forma de conseguir los nombres de los archivos con node:readline. Quiero que le pregunte al usuario cuál es el nombre del primer folio, seguido del nombre del segundo folio.
 ```
 
-**Desarrollo:**
-- Modificación de `login.ts`:
-  - Permitir el uso del navegador sin cerrarlo inmediatamente.
-  - Retornar `browser` y `page` para continuar con el flujo.
-- Creación de un endpoint en `src/routes/index.ts` para recibir los folios y verificar su estado.
+**Modificaciones:**
+- Implementación de `readline/promises` para interacción con el usuario.
+- Creación de una interfaz para solicitar los nombres de los folios dinámicamente.
+- Traducción de mensajes al español para mantener consistencia.
+- Mensajes agregados en consola para mayor claridad.
 
 ---
 
-### **Segundo Prompt**:
-```
-El código se ve bien, pero no necesitamos la ruta para cerrar el navegador manualmente. En la línea que te marco, ya estamos obteniendo el objeto browser y la página para trabajar con los folios. Una vez finalizado el procesamiento de los mismos, podemos cerrar el navegador sin necesidad de una ruta extra.
-```
-
-**Cambios:**
-- Eliminación del endpoint `/cerrar-navegador`.
-- Manejo del cierre del navegador dentro del proceso de verificación.
-
-_(Nota: Se realizaron ajustes manuales para la lectura de archivos de folios y notificaciones por consola/Telegram)._
-
----
-
-## Generación de Documentos
+## Integración con IA para notificaciones
 
 ### **Primer Prompt**:
 ```
-Implementa una función llamada uploadFeeLetter en un archivo TypeScript separado. Esta función debe generar una nueva carta de honorarios en formato .txt y devolver el número de siniestro que se generó para la misma. Puedes utilizar crypto.randomUUID(), que ya viene integrado con Node.js, para generar el identificador único del siniestro.
+La notificación por consola la va a realizar una inteligencia artificial. Vas a usar el SDK AI de Vercel en un archivo aparte para guardar el número de siniestro de la carta de honorarios y que lo imprima por consola.
 ```
 
 **Desarrollo:**
-- Creación de `src/automation/utils/feeLetter.ts`.
-- Implementación de `uploadFeeLetter()`.
+- Instalación del SDK de Vercel AI (`ai` y `@ai-sdk/openai`).
+- Creación del servicio `aiService.ts` para manejar la notificación con IA.
+- Implementación de la generación de mensajes personalizados basados en el número de siniestro.
+- Modificación del controlador para integrar la IA en la generación de cartas de honorarios.
+- Inclusión de `OPENAI_API_KEY` en `.env` y documentación en `README.md`.
 
 ---
 
@@ -146,4 +136,3 @@ Implementa la función startCronJob en un archivo separado. Esta función debe e
 - Configuración del cron job para ejecutar la verificación cada 10 minutos.
 
 ---
-
