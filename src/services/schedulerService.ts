@@ -1,25 +1,28 @@
 import cron from 'node-cron';
 import axios from 'axios';
 import { config } from '../config/env.ts';
+import * as readline from 'node:readline/promises';
+import { stdin as input, stdout as output } from 'node:process';
 
 /**
  * Makes a POST request to the /automation endpoint
- * with the record file names passed as console arguments
+ * with the record file names provided by user input
  */
 async function verifyRecords(): Promise<void> {
   try {
-    // Get the record file names from the command line arguments
-    const args = process.argv.slice(2);
+    // Create readline interface
+    const rl = readline.createInterface({ input, output });
     
-    if (args.length < 2) {
-      console.error('Two record files are required as parameters.');
-      return;
-    }
+    // Ask for the first record file name
+    const record1 = await rl.question('Ingrese el nombre del primer folio: ');
+    
+    // Ask for the second record file name
+    const record2 = await rl.question('Ingrese el nombre del segundo folio: ');
+    
+    // Close the readline interface
+    rl.close();
 
-    const record1 = args[0];
-    const record2 = args[1];
-
-    console.log(`Verifying records: ${record1} and ${record2}`);
+    console.log(`Verificando folios: ${record1} y ${record2}`);
 
     // Endpoint URL
     const url = `http://localhost:${config.port}/api/automation`;
@@ -30,9 +33,9 @@ async function verifyRecords(): Promise<void> {
       folio2: record2
     });
 
-    console.log('Record verification response:', response.data);
+    console.log('Respuesta de verificación de folios:', response.data);
   } catch (error) {
-    console.error('Error verifying records:', error);
+    console.error('Error al verificar folios:', error);
   }
 }
 
@@ -40,14 +43,17 @@ async function verifyRecords(): Promise<void> {
  * Starts a cron job that executes the record verification every 10 minutes
  */
 export function startCronJob(): void {
-  console.log('Starting cron job to verify records every 10 minutes...');
+  console.log('Iniciando trabajo cron para verificar folios cada 10 minutos...');
   
   // Execute immediately when the server starts
-  verifyRecords();
+  // verifyRecords();
+  setTimeout(() => {
+    verifyRecords();
+  }, 1000);
   
   // Schedule execution every 10 minutes
   cron.schedule('*/10 * * * *', () => {
-    console.log('Executing scheduled record verification...');
+    console.log('Ejecutando verificación programada de folios...');
     verifyRecords();
   });
 } 
